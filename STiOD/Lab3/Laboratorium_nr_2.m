@@ -40,14 +40,14 @@ rbc = rb;
 c =zeros(1,stl);
 
 res = zeros(1, stl);
-
+g =zeros(stl);
  for i = 1 : stl
     if (i > rb)
         rbc = rbc-1;
         k=k+1;
 
     end
-
+    q(i) = [b(i),bcopy(i)]
     if(b(i) == bcopy(i))&&(b(i)==1)
         res(1,i) = 1;
     elseif(b(i) == bcopy(i))&&(b(i)==0)
@@ -83,13 +83,16 @@ end
 
 
  
+
 for i=1:rb
     for j=1:cb   
         if(b(i,j) ~= bcopy(i,j))
-            disp('dziala3');
+            %disp('dziala3');
+            
         end
     end
 end
+
 if (c == sst)
     disp('dziala2');
 else
