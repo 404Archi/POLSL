@@ -9,8 +9,8 @@ figure,imshow(b);
 bcopy = b;
 rbc = rb;
 st = 'Rafal_Fieroch_Marcin_Obyrtal';
-sst=  dec2bin(st,8)
-dt  = bin2dec(sst);
+sst=  dec2bin(st,8)-'0';
+
 
 sst = sst(:);
 sst = sst';
@@ -64,7 +64,7 @@ end
 
 figure,imshow(res);
 for i = 1 : stl
-    c(i)=res(1,i);
+    c(i)=res(rb,cb-i+1);
 end
 
 c = num2str(c);
@@ -72,26 +72,28 @@ c = c(find(~isspace(c)));
 kot = reshape(c, [], 8);                            % Reshape To (12x8) Character Array
 [rbin,cbin] = size(kot);
 
-qwe = (num2str(kot))
-qw  = bin2dec(qwe)
+qwe = (num2str(kot));
+qw  = bin2dec(qwe);
 char(qw')
 
 
 
 
 
-
+ty = 0;
 
 for i=1:rb
     for j=1:cb   
         if(b(i,j) ~= bcopy(i,j))
+            ty = ty+1;
             %disp('dziala3');
             
         end
     end
 end
+ty
 
-if (c == sst)
+if (c-'0' == sst)
     disp('dziala2');
 else
     disp('nie dziala2');
