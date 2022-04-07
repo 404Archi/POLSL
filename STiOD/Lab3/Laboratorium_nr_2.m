@@ -9,11 +9,31 @@ figure,imshow(b);
 bcopy = b;
 rbc = rb;
 st = 'Rafal_Fieroch_Marcin_Obyrtal';
-sst=  logical(dec2bin(st,8)-'0');
+sst = dec2bin(st,8);
+dr = bin2dec(sst)
+chr = convertStringsToChars(sst)
 sst = sst(:);
 sst = sst';
 %sst = flip(sst);
 
+k=0;
+stl = length(sst);
+for i = 1 : stl
+    if (i > rb)
+        rbc = rbc-1;
+        k=k+1;
+
+    end
+    
+        if (mod(b(rbc,cb-i+1-rb*k),2) == 1) && (sst(i) == 0)
+           b(rbc,cb-i+1-rb*k) = b(rbc,cb-i+1-rb*k) - 1; 
+        end
+        if  (mod(b(rbc,cb-i+1-rb*k),2) == 0) && (sst(i) == 1)
+            b(rbc,cb-i+1-rb*k) = b(rb,cb-i+1) + 1;   
+        end
+   
+
+end
 
 k=0;
 stl = length(sst);
@@ -60,7 +80,7 @@ for j = 1 : cb
  end    
 end
 
-res
+res;
 
 for i = 1 : stl
 
@@ -85,7 +105,7 @@ for i = 1:rbin
    y=y+1;
 end
 
-x
+x;
 
 
 
@@ -108,6 +128,7 @@ else
     disp('nie dziala2');
 end
  
+x
 
 
 
