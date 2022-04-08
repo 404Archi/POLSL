@@ -13,6 +13,9 @@
 		<Item Name="SubVI" Type="Folder" URL="../SubVI">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
+		<Item Name="SuportVI" Type="Folder" URL="../SuportVI">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="Test" Type="Folder" URL="../Test">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
@@ -71,10 +74,10 @@
 				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
-			<Item Name="Check Loop Error.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Check Loop Error.vi"/>
-			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Error Handler - Event Handling Loop.vi"/>
-			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Error Handler - Message Handling Loop.vi"/>
-			<Item Name="Message Queue.lvlib" Type="Library" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Message Queue/Message Queue.lvlib"/>
+			<Item Name="Check Loop Error.vi" Type="VI" URL="../SuportVI2/Check Loop Error.vi"/>
+			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../SuportVI2/Error Handler - Event Handling Loop.vi"/>
+			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../SuportVI2/Error Handler - Message Handling Loop.vi"/>
+			<Item Name="Message Queue.lvlib" Type="Library" URL="../SuportVI2/Message Queue/Message Queue.lvlib"/>
 			<Item Name="niimaqdx.dll" Type="Document" URL="niimaqdx.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -84,8 +87,8 @@
 			<Item Name="nivissvc.dll" Type="Document" URL="nivissvc.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Set Enable State on Multiple Controls.vi" Type="VI" URL="/C/Users/rfier/Desktop/OSP/ContAcqQMH_Lab/support/Set Enable State on Multiple Controls.vi"/>
-			<Item Name="User Event - Stop.lvlib" Type="Library" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/User Event - Stop/User Event - Stop.lvlib"/>
+			<Item Name="Set Enable State on Multiple Controls.vi" Type="VI" URL="../SuportVI2/Set Enable State on Multiple Controls.vi"/>
+			<Item Name="User Event - Stop.lvlib" Type="Library" URL="../SuportVI2/User Event - Stop/User Event - Stop.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
