@@ -9,6 +9,7 @@ figure,imshow(b);
 bcopy = b;
 rbc = rb;
 st = 'Rafal_Fieroch_Marcin_Obyrtal';
+<<<<<<< HEAD
 sst = dec2bin(st,8);
 dr = bin2dec(sst)
 chr = convertStringsToChars(sst)
@@ -34,6 +35,13 @@ for i = 1 : stl
    
 
 end
+=======
+sst=  dec2bin(st,8)-'0';
+
+
+sst = sst(:);
+sst = sst';
+>>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
 
 k=0;
 stl = length(sst);
@@ -60,40 +68,43 @@ rbc = rb;
 
 res = zeros(rb, cb);
 g = zeros(stl);
-for j = 1 : cb
- for i = 1 : rb
+for i = 1 : rb
+ for j = 1 : cb
 %     if (i > rb)
 %         rbc = rbc-1;
 %         k=k+1;
 
 %     end
     %g(i, j) = [b(i, j),bcopy(i, j)]
-    if(b(i, j) == bcopy(i, j))&&(mod(b(i, j),2)==1)
-        res(i,j) = 1;
-    elseif(b(i,j) == bcopy(i, j))&&(mod(b(i, j),2)==0)
-        res(i, j) = 0;
-    elseif(b(i) ~= bcopy(i, j))&&(mod(b(i, j),2)==0)
+    if(b(i,j) ~= bcopy(i, j))&&(mod(bcopy(i, j),2)==0)
         res(i, j) = 1;
-    elseif(b(i) ~= bcopy(i, j))&&(mod(b(i, j),2)==1)
+    elseif(b(i,j) ~= bcopy(i, j))&&(mod(bcopy(i, j),2)==1)
         res(i, j) = 0;
+    elseif(b(i, j) == bcopy(i, j))&&(mod(bcopy(i, j),2)==1)
+        res(i,j) = 1;
+    elseif(b(i,j) == bcopy(i, j))&&(mod(bcopy(i, j),2)==0)
+        res(i, j) = 0;
+
     end
  end    
 end
 
+<<<<<<< HEAD
 res;
+=======
+>>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
 
+figure,imshow(res);
 for i = 1 : stl
-
-
-    c(i)=res(1,i);
-    
+    c(i)=res(rb,cb-i+1);
 end
 
-%c = flip(c);
-%c =ones(1,stl);
+c = num2str(c);
+c = c(find(~isspace(c)));
 kot = reshape(c, [], 8);                            % Reshape To (12x8) Character Array
 [rbin,cbin] = size(kot);
 
+<<<<<<< HEAD
 x = zeros(rbin,1);
 y=0;
 for i = 1:rbin
@@ -107,22 +118,30 @@ end
 
 x;
 
+=======
+qwe = (num2str(kot));
+qw  = bin2dec(qwe);
+char(qw')
+>>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
 
 
 
 
 
+ty = 0;
 
 for i=1:rb
     for j=1:cb   
         if(b(i,j) ~= bcopy(i,j))
+            ty = ty+1;
             %disp('dziala3');
             
         end
     end
 end
+ty
 
-if (c == sst)
+if (c-'0' == sst)
     disp('dziala2');
 else
     disp('nie dziala2');
