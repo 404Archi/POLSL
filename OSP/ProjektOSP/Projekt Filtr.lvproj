@@ -74,7 +74,6 @@
 			<Item Name="Check Loop Error.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Check Loop Error.vi"/>
 			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Error Handler - Event Handling Loop.vi"/>
 			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Error Handler - Message Handling Loop.vi"/>
-			<Item Name="Filter.vi" Type="VI" URL="../Test/Filter.vi"/>
 			<Item Name="Message Queue.lvlib" Type="Library" URL="../../../../../../Documents/LabVIEW Data/Untitled Project 1/support/Message Queue/Message Queue.lvlib"/>
 			<Item Name="niimaqdx.dll" Type="Document" URL="niimaqdx.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
