@@ -9,7 +9,7 @@ figure,imshow(b);
 bcopy = b;
 rbc = rb;
 st = 'Rafal_Fieroch_Marcin_Obyrtal';
-<<<<<<< HEAD
+
 sst = dec2bin(st,8);
 dr = bin2dec(sst)
 chr = convertStringsToChars(sst)
@@ -35,13 +35,13 @@ for i = 1 : stl
    
 
 end
-=======
+
 sst=  dec2bin(st,8)-'0';
 
 
 sst = sst(:);
 sst = sst';
->>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
+
 
 k=0;
 stl = length(sst);
@@ -89,10 +89,9 @@ for i = 1 : rb
  end    
 end
 
-<<<<<<< HEAD
+
 res;
-=======
->>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
+
 
 figure,imshow(res);
 for i = 1 : stl
@@ -104,7 +103,7 @@ c = c(find(~isspace(c)));
 kot = reshape(c, [], 8);                            % Reshape To (12x8) Character Array
 [rbin,cbin] = size(kot);
 
-<<<<<<< HEAD
+
 x = zeros(rbin,1);
 y=0;
 for i = 1:rbin
@@ -118,11 +117,10 @@ end
 
 x;
 
-=======
 qwe = (num2str(kot));
 qw  = bin2dec(qwe);
 char(qw')
->>>>>>> 8b0b099a8675a5b0f1000bdcd258005b6bbdb8c9
+
 
 
 
