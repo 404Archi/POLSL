@@ -4,7 +4,7 @@ clear all;
 a = imread('TestImage2.png');
 authors = imread('authors.png');
 [ra,ca, wa] = size(a);
-[aaut, caut, waut] = size(authors);
+[aaut, caut, waut] = s
 b = imread('cienkopisy_srgb_CFA.png');
 [rb,cb] = size(b);
 rac = ra;
