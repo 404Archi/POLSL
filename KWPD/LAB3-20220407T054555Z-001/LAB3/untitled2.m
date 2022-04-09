@@ -4,7 +4,7 @@ x1 = linspace(0,1,100);
 x2 = linspace(0.5,1,100);
 
 y1 = 3 * x1 + 2;
-y2 = -x1/3 + 4;
+y2 = -x1 + 4;
 y3 = 5 * x1 + 1;
 
 figure
