@@ -4,7 +4,7 @@ clear all;
 a = imread('cienkopisy_srgb.png');
 [ra,ca] = size(a);
 b = imread('cienkopisy_srgb_CFA.png');
-figure,imshow(b); %pokazuje obrazek orygnalny
+figure,imshow(b);
 [rb,cb] = size(b);
 bcopy = b;
 rbc = rb;
@@ -61,7 +61,7 @@ for i = 1 : stl
    
 
 end
-figure,imshow(b); %pokazuje rysunek po zakodowaniu tresci
+figure,imshow(b); %pokazuje rysunek oryginalny
 
 
 rbc = rb;
