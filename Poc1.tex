@@ -1,0 +1,535 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{secdot}
+\usepackage{geometry}
+\usepackage{graphicx} 
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subfig}
+\usepackage{enumerate}
+\usepackage{titlesec}
+\usepackage{underscore}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{courier}
+\usepackage{mathptmx}
+\usepackage{seqsplit}
+\usepackage[font={small,it}, labelfont={bf}]{caption}
+\usepackage{listings}
+\lstset{
+  breaklines = true,
+  literate={ą}{{\k a}}1
+  		     {Ą}{{\k A}}1
+           {ż}{{\. z}}1
+           {Ż}{{\. Z}}1
+           {ź}{{\' z}}1
+           {Ź}{{\' Z}}1
+           {ć}{{\' c}}1
+           {Ć}{{\' C}}1
+           {ę}{{\k e}}1
+           {Ę}{{\k E}}1
+           {ó}{{\' o}}1
+           {Ó}{{\' O}}1
+           {ń}{{\' n}}1
+           {Ń}{{\' N}}1
+           {ś}{{\' s}}1
+           {Ś}{{\' S}}1
+           {ł}{{\l}}1
+           {Ł}{{\L}}1
+}
+%\usepackage[LGRgreek]{mathastext}
+
+\graphicspath{{C:/Users/marci/Documents/GitHub/studia/POC/Lab_1/images/}}
+
+\newgeometry{tmargin=2cm, bmargin=2cm, lmargin=2cm, rmargin=2cm}
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\ww}{0.32}
+\begin{center}
+\includegraphics[scale=1.1]{polsl_logo}
+\bigskip
+
+\Large{ \textbf{POLITECHNIKA ŚLĄSKA}
+
+\textbf{WYDZIAŁ AUTOMATYKI, ELEKTRONIKI I INFORMATYKI} }
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Laboratorium}
+\medskip
+
+\textbf{Przetwarzanie Obrazów Cyfrowych}
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\large{ \textbf{PREZENTACJA GRAFIKI RASTROWEJ - FORMATY PLIKÓW GRAFICZNYCH}}
+
+\vspace{2cm}
+
+\centering Ćwiczenie wykonano:\\
+\centering08.04.2022
+
+\vfill
+
+\normalsize
+
+\vspace{5cm}
+
+\begin{flushleft}
+\hspace{12.5cm}Autor: \\
+\hspace{12.5cm}\textbf{Marcin Obyrtał} \\
+
+\hspace{12.5cm}Semestr: VI \\
+
+\hspace{12.5cm}Grupa: 2 \\
+
+\end{flushleft}
+
+\medskip
+
+\vspace*{\fill}        Gliwice, 2022
+
+\end{center}
+
+\end{titlepage}
+
+\section{Wybrane obrazy do testów}
+
+\newcommand{\ww}{0.32}
+
+\begin{figure}[h]
+
+\captionsetup[subfloat]{position=bottom,labelformat=empty} 
+\subfloat[Obraz rzeczywisty]{\includegraphics[width=\ww\linewidth]{pens.PNG}}
+\hfill
+\subfloat[Obraz rzeczywisty szary]{\includegraphics[width=\ww\linewidth]{woman_512x512.PNG}}
+\hfill
+\subfloat[Obraz syntetyczny]{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC.PNG}}\\
+
+\caption{Wybrane obrazy do analizy}
+
+\label{fig:fig1}
+\end{figure}
+
+\section{Wybrane wskaźniki}
+
+\begin{enumerate}[a)]
+
+  \item \textbf {PSNR} (peak signal-to-noise ratio) \--- stosunek maksymalnej mocy sygnału do mocy szumu zakłócającego ten sygnał. 
+  Ze względu na szeroki zakres wartości PSNR wyrażany jest w decybelach. 
+  W~ celu wyznaczenia PSNR należy wpierw obliczyć współczynnik MSE (ang. mean squared \linebreak error) bazujący na obu porównywanych obrazach, korzystając z wzoru:
+  \begin{equation*}
+  \begin{aligned}
+    MSE =\frac{1}{N \cdot M}\sum_{i=1}^{N}\sum_{j=1}^{M}([f(i,j)-f'(i,j)]^2),
+  \end{aligned}
+  \end{equation*}
+  gdzie:
+  \begin{equation*}
+  \begin{aligned}
+    & N, M \textrm{\ --- wymiary obrazu w pikselach,} \\
+    & f(i,j) \textrm{\ --- wartość piksela o współrzędnych } (i,j) \textrm{ obrazu oryginalnego,} \\
+    & f'(i,j) \textrm{\ --- wartość piksela o współrzędnych } (i,j) \textrm{ obrazu skompresowanego.} \\
+  \end{aligned}
+  \end{equation*}
+  Następnie wyliczoną wartość MSE należy podstawić do wzoru końcowego: \\
+  \begin{equation*}
+    \begin{aligned}
+      & PSNR = 10 \cdot \mathrm{log_{10}}\frac{[\mathrm{max}(f(i,j))]^2}{MSE},
+    \end{aligned}
+  \end{equation*}
+  gdzie:
+  \begin{equation*}
+  \begin{aligned}
+    & \hspace{1.5cm}\textrm{max}(f(i,j)) \textrm{ --- wartość maksymalna danego sygnału; w przypadku obrazów zwykle}
+  \end{aligned}
+  \vspace{-0.3cm}
+  \end{equation*}
+  \hspace{1.55cm} jest to wartość stała, np. dla obrazów monochromatycznych o reprezentacji 8-bitowej \\
+  \hspace*{1.5cm} wynosi 255.
+
+  \item \textbf {MAE} (mean absolute error) \--- średnia z sumy błędów bezwględnych. Oblicza się ją korzystając ze wzoru:
+  \begin{equation*}
+    \begin{aligned}
+      MAE =\frac{\sum_{i=1}^{n}|y_i - x_i|}{n},
+    \end{aligned}
+  \end{equation*}
+    gdzie:
+  \begin{equation*}
+    \begin{aligned}
+      & n \textrm{\ --- liczba pikseli w obrazie,} \\*
+      & y_i, x_i \textrm{\ --- wartość piksela } i \textrm{-tego w obrazie oryginalnym i skompresowanym}
+    \end{aligned}
+  \end{equation*}
+ 
+\end{enumerate}
+  
+\section{Podział formatów i opis GIFa}
+
+\subsection{Podział rozszerzeń plików graficznych}
+
+\begin{enumerate}
+
+  \item grafika rastrowa
+ \begin{enumerate}[a)]
+
+  \item kompresja stratna
+\begin{itemize}
+  \item JPEG
+  \item JPEG2000
+  \item GIF
+\end{itemize}
+  \item kompresja bezstratna
+\begin{itemize}
+  \item PNG
+  \item BMP
+  \item TIFF
+\end{itemize}
+  \item brak kompresji
+ \begin{itemize}
+  \item XCF
+\end{itemize}
+\end{enumerate}
+
+  \item grafika wektorowa
+ \begin{itemize}
+  \item SWF
+  \item SVG 
+\end{itemize}
+
+\end{enumerate}
+
+\subsection{Opis GIFa} 
+\textbf{GIF} (ang. Graphics Interchange Format) to format pliku graficznego pozwalający również zapisywać animacje.
+Format GIF jest formatem stratnym, gdyż pozwala na zapisie do 256 kolorów w danym bloku (często jest to równoznaczne
+z całym plikiem). GIF jest oparty na paletach: kolory używane w~ obrazie (ramce) w pliku mają swoje wartości RGB zdefiniowane 
+w tabeli palet, która może zawierać do 256 wpisów, a dane obrazu odnoszą się do kolorów za pomocą ich indeksów (0-255)   
+w tabeli palet. 
+Definicje kolorów w palecie mogą pochodzić z przestrzeni barw składającej się z milionów odcieni (224 odcienie, 8 bitów dla każdego 
+koloru podstawowego), ale maksymalna liczba kolorów, z których może korzystać ramka, wynosi 256. 
+
+
+\section{Przedstawienie metod kompresji obrazów}
+
+W celu przedstawienia metod kompresji, wybrane obrazy zostały poddane zmianie rozszerzenia. Każdy obraz został zapisany do PNG, GIF,
+JPG i JP2 (w przypadku dwóch ostatnich rozszerzeń został dobieranane 2 stopnie jakości (w przypadku JPG: 100 - minimalna kompresja,
+0 - maksymalna kompresja), (w przypadku JP2: 1000 - minimalna kompresja, 0 - maksymalna  kompresja) w taki sposób, aby dla plików JPG
+uzyskać obrazy: 
+\begin{itemize}
+\setlength\itemsep{-0.2cm}
+ \item subiektywnie o wysokiej jakości przy jak najmniejszym rozmiarze
+ \item subiektywnie pozwalający zobaczyć co przedstawia obrazek
+\end{itemize}
+Natomiast JP2 zostały dobrane tak, by były rozmiarowo zbliżone do JPG). \vspace*{-0.5cm}\\
+
+\begin{flushleft}
+Będziemy porównywać obrazy wybranymi wcześniej wskaźnikami jakości (PSNR i MAE). 
+W~ przypadku PSNR, czym wynik większy, tym lepiej (lepsze odwzorowanie obrazu). 
+W~ przypadku MAE, odwrotnie.
+\end{flushleft}
+
+
+\subsection{Obraz rzeczywisty}
+
+\begin{figure}[H]
+\captionsetup[subfloat]{position=bottom,labelformat=empty} 
+\subfloat
+[TIFF: \\
+{Rozmiar: 617 [kB]} \\
+PNG: \\
+{Rozmiar: 237 [kB]} \\
+{PSNR: INF [dB]} \\
+{MAE: 0} \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_frag.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_1 = 75}$ \\
+{Rozmiar: 17,2 [kB]} \\
+{PSNR: 32,0917092835493 [dB]} \\
+{MAE: 4,06690045336537} \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_75_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_1 = 55}$ \\
+{Rozmiar: 16,8 [kB]} \\
+{PSNR: 38,2927949147924 [dB]} \\
+{MAE: 2,23602123454877} \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_55_frag_jp2.PNG}}\\
+\subfloat
+[GIF: \\
+{Rozmiar: 47,9 [kB]} \\
+{PSNR: 34,0089220458643 [dB]}\\
+{MAE: 2,83251314242906} \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_frag_gif.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_2 = 8}$ \\
+{Rozmiar: 4,84 [kB]} \\
+{PSNR: 24,989539546534 [dB]}\\
+MAE: 10,1340269435941 \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_8_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_2 = 16}$ \\
+{Rozmiar: 4,87 [kB]} \\
+{PSNR: 28,9936454929455 [dB]}\\
+MAE: 6,16604667984139 \\
+]
+{\includegraphics[width=\ww\linewidth]{pens_16_frag_jp2_v2.PNG}}
+
+\caption{Porównanie metod kompresji dla obrazu rzeczywistego}
+
+\label{fig:fig2}
+\end{figure}
+
+\textbf{Wnioski:} \\
+W przypadku wybranego obrazu rzeczywistego:
+\begin{itemize}
+\setlength\itemsep{-0.2cm}
+  \item Kompresja do PNG zmniejszyła rozmiar obrazka (ponad 2-krotnie), przy jednoczesnym 
+  zachowaniu idealnego odwzorowania pikseli. 
+  \item Kompresja do GIF znacząco zmniejszyła rozmiar pliku (ponad 12-krotnie),
+   skala barw została lekko ograniczona
+   \item Kompresja do JPG pozwoliła znacząco zmniejszyć rozmiar pliku (ponad 30-krotnie
+   pozwalając uzyskać obraz, który mieści się w granicach tolerancji). Jeżeli zależy nam bardzo
+   na jak najmniejszym rozmiarze pliku, ale tak, by informacja była możliwa do odczytania to jesteśmy
+   w~ stanie uzyskać rozmiar aż 120-krotnie mniejszy niż oryginał.
+   \item Kompresja do JP2 daje lepsze wyniki (lepsza jakość obrazu) w stosunku do JPG o tym samym rozmiarze.
+\end{itemize}
+
+\subsection{Obraz rzeczywisty szary}
+
+\begin{figure}[H]
+\captionsetup[subfloat]{position=bottom,labelformat=empty} 
+\subfloat
+[BMP: \\
+{Rozmiar: 257 [kB]} \\
+PNG: \\
+{Rozmiar: 189 [kB]} \\
+{PSNR: INF [dB]} \\
+{MAE: 0} \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_frag.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_1 = 85}$ \\
+{Rozmiar: 56,3 [kB]} \\
+{PSNR: 37,2757566658855 [dB]} \\
+{MAE: 2,60620530565167} \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_85_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_1 = 72}$ \\
+{Rozmiar: 55,2 [kB]} \\
+{PSNR: 39,8274037178062 [dB]} \\
+{MAE: 2,02674740484429} \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_72_frag_jp2.PNG}}\\
+\subfloat
+[GIF: \\
+{Rozmiar: 222 [kB]} \\
+{PSNR: INF [dB]} \\
+{MAE: 0} \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_frag_gif.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_2 = 13}$ \\
+{Rozmiar: 11,2 [kB]} \\
+{PSNR: 24,989539546534 [dB]}\\
+MAE: 10,1340269435941 \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_13_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_2 = 14}$ \\
+{Rozmiar: 10,7 [kB]} \\
+{PSNR: 31,5375477394586 [dB]}\\
+MAE: 4,87587850826605 \\
+]
+{\includegraphics[width=\ww\linewidth]{woman_512x512_14_frag_jp2.PNG}}
+
+\caption{Porównanie metod kompresji dla obrazu rzeczywistego szarego}
+
+\label{fig:fig3}
+\end{figure}
+
+\textbf{Wnioski:} \\
+W przypadku wybranego obrazu rzeczywistego szarego:
+
+\begin{itemize}
+  \setlength\itemsep{-0.2cm}
+    \item Kompresja do PNG zmniejszyła rozmiar obrazka (o około 25\%), przy jednoczesnym 
+    zachowaniu idealnego odwzorowania pikseli. 
+    \item Kompresja do GIF praktycznie nie zmniejszyła rozmiaru obrazka (spadek o 12,5\%).
+    Obraz nie uległ żadnym zmianom.
+     \item Kompresja do JPG pozwoliła znacząco zmniejszyć rozmiar pliku (5-krotnie
+     pozwalając uzyskać obraz, który mieści się w granicach tolerancji). Jeżeli zależy nam bardzo
+     na jak najmniejszym rozmiarze pliku, ale tak, by informacja była możliwa do odczytania to jesteśmy 
+     w~ stanie uzyskać rozmiar ponad 20-krotnie mniejszy niż oryginał.
+     \item Kompresja do JP2 daje lepsze wyniki (lepsza jakość obrazu) w stosunku do JPG o tym samym rozmiarze.
+  \end{itemize}
+
+\subsection{Obraz syntetyczny}
+
+\begin{figure}[H]
+\captionsetup[subfloat]{position=bottom,labelformat=empty} 
+\subfloat
+[BMP: \\
+{Rozmiar: 474 [kB]} \\
+PNG: \\
+{Rozmiar: 8,2 [kB]} \\
+{PSNR: INF [dB]} \\
+{MAE: 0} \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_frag.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_1 = 80}$ \\
+{Rozmiar: 49,7 [kB]} \\
+{PSNR: 29,4423531988225 [dB]} \\
+{MAE: 1,41546793940652} \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_80_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_1 = 34}$ \\
+{Rozmiar: 48,2 [kB]} \\
+{PSNR: 44,42462315244512 [dB]} \\
+{MAE: 0,550053261395864} \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_34_frag_jp2.PNG}}\\
+\subfloat
+[GIF: \\
+{Rozmiar: 10,8 [kB]} \\
+{PSNR: INF [dB]} \\
+{MAE: 0} \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_frag_gif.PNG}}
+\hfill
+\subfloat
+[JPG: \\
+$\mathrm{q_2 = 10}$ \\
+{Rozmiar: 18,4 [kB]} \\
+{PSNR: 24,2226690767368 [dB]}\\
+MAE: 3,4841516220516 \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_10_frag.JPG}}
+\hfill
+\subfloat
+[JP2: \\
+$\mathrm{Q_2 = 12}$ \\
+{Rozmiar: 17 [kB]} \\
+{PSNR: 29,528367743773 [dB]}\\
+MAE: 2,62115307463512 \\
+]
+{\includegraphics[width=\ww\linewidth]{NCDvsIteraLenaGC_12_frag_jp2.PNG}}
+
+\caption{Porównanie metod kompresji dla obrazu rzeczywistego szarego}
+
+\label{fig:fig4}
+\end{figure}
+
+\begin{itemize}
+  \setlength\itemsep{-0.2cm}
+    \item Kompresja do PNG zmniejszyła rozmiar obrazka aż 60-krotnie, przy jednoczesnym 
+    zachowaniu idealnego odwzorowania pikseli. 
+    \item Kompresja do GIF praktycznie nie zmnieszyła rozmiaru obrazka ponad 40-krotnie.
+    Obraz nie uległ żadnym zmianom.
+     \item Kompresja do JPG pozwoliła znacząco zmniejszyć rozmiar pliku (9-krotnie
+     pozwalając uzyskać obraz, który mieści się w granicach tolerancji). Jeżeli zależy nam bardzo
+     na jak najmniejszym rozmiarze pliku, ale tak, by informacja była możliwa do odczytania to jesteśmy 
+     w~ stanie uzyskać rozmiar 25-krotnie mniejszy niż oryginał.
+     \item Kompresja do JP2 daje lepsze wyniki (lepsza jakość obrazu) w stosunku do JPG o tym samym rozmiarze.
+  \end{itemize}
+
+\section{Wykresy}
+
+\subsection{Obraz rzeczywisty}
+
+\begin{figure}[H]
+
+\centering
+
+{\includegraphics[width=15cm]{Wykres_re.PNG}}
+
+\captionsetup{justification=centering}
+
+\caption{Wykres zależności PSNR od wielkości pliku dla obrazu rzeczywistego \\ (rozszerzenie JPG i JP2)}
+
+\label{fig:fig5}
+\end{figure}
+
+\textbf{Wnioski:} \\
+W przypadku wybranego obrazu syntetycznego róznica w~ PSNR między rozszerzeniem JP2 a~ JPG nieznacznie rośnie wraz ze wzrostem 
+rozmiaru pliku. 
+
+\subsection{Obraz rzeczywisty szary}
+
+\begin{figure}[H]
+
+\centering
+  
+{\includegraphics[width=15cm]{Wykres_re_gray.PNG}}
+  
+\captionsetup{justification=centering}
+  
+\caption{Wykres zależności PSNR od wielkości pliku dla obrazu rzeczywistego szarego \\ (rozszerzenie JPG i JP2)}
+  
+\label{fig:fig6}
+\end{figure}
+
+\textbf{Wnioski:} \\ 
+W przypadku obrazu rzeczywistego różnica w~ PSNR między rozszerzeniem JP2 i JPG maleje wraz ze wzrostem rozmiaru pliku.
+
+\subsection{Obraz syntetyczny}
+
+\begin{figure}[H]
+
+\centering
+  
+{\includegraphics[width=15cm]{Wykres_syn.PNG}}
+  
+\captionsetup{justification=centering}
+  
+\caption{Wykres zależności PSNR od wielkości pliku dla obrazu syntetycznego \\ (rozszerzenie JPG i JP2)}
+  
+\label{fig:fig7}
+\end{figure}
+
+\textbf{Wnioski:} \\ 
+W przypadku obrazu rzeczywistego różnica w~ PSNR między rozszerzeniem JP2 i JPG znacząco rośnie wraz ze wzrostem rozmiaru pliku.
+
+\end{document}
+

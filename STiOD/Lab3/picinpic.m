@@ -22,8 +22,9 @@ for x=1:size(c,1)
         for z=1:size(c,3)
             inp = a(x,y,z);
             outp = 0;
-            outp(bitand(inp,1) == 1) = 255; %j ezeli wartość LSB piksela 
-            % obrazu zawierajacego ukryty obraz wynosi 1 zmien wartosc na 255
+            outp(bitand(inp,1) == 1) = 255; %jezeli wartość LSB piksela 
+            % obrazu zawierajacego ukryty obraz wynosi 1 zmien wartosc na 
+            % 255
             c(x,y,z) = outp;
         end
     end
