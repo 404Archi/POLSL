@@ -1,0 +1,22 @@
+nash
+
+A =
+
+    -2     2    -2    -2
+     0     0     2    -1
+     0     1     1    -1
+    -2     1     0     2
+
+
+B =
+
+    -2     0    -2     2
+     0    -2    -1     0
+    -1     2    -1     0
+     2    -1    -2     0
+
+Row. Nasha 1: (1,1)=(-2,-2)
+Row. Nasha 2: (2,2)=(0,-2)
+Dopuszczalne: (1,1)=(-2,-2)
+Brak minimaksowych rozwiazan w macierzy A
+Brak minimaksowych rozwiazan w macierzy B

@@ -1,0 +1,19 @@
+A =
+
+   -12    36    35   -50
+    -9   -35    41    26
+    20     9    21   -50
+     5    20    45    11
+
+
+B =
+
+   -47    10     0    42
+    23    32    28   -10
+     7   -16   -34     6
+     5    43    41    43
+
+Row. Nasha 1: (1,1)=(-12,-47)
+Row. Nasha 2: (3,3)=(21,-34)
+Dopuszczalne: (1,1)=(-12,-47)
+Brak minimaksowych rozwiazan w macierzy B
