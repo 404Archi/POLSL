@@ -5,6 +5,7 @@ maks = min(maksy); %poziom bezpieczeństwa dla minimalizującego
 mini = max(miny); %poziom bezpieczeństwa dla maksymalizującego
 for i = 1 : length(maksy)
     if(maksy(i)== maks)
+        mini
 %         disp('gracz pierwszy(minimalizuje) gra: ');
 %         disp(i);
         gracz1 = i;

@@ -41,6 +41,7 @@ if(length(A) == 4^K)
     dec = zeros(k,2);
     for k = K : -1: 1
         for i = 1 : 4 : 4^k
+            mini
             A(1,1) = lvl(k,i);
             A(1,2) = lvl(k,i+1);
             A(2,1) = lvl(k,i+2);
