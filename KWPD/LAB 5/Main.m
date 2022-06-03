@@ -13,8 +13,8 @@ index = ((j-1)*4)+1;
 a(1,1) = A(index);
 a(1,2) = A(index+1);
 a(2,1) = A(index+2);
-
 a(2,2) = A(index+3);
+
 b(1,1) = B(index);
 b(1,2) = B(index+1);
 b(2,1) = B(index+2);
