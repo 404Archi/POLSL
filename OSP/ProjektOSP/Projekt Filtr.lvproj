@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Project Type="Project" LVVersion="20008000">
-	<Property Name="varPersistentID:{0E176165-7AB9-434D-A9E6-D391A5D20F4C}" Type="Ref">/My Computer/Untitled Library 1.lvlib/Variable1</Property>
+	<Property Name="varPersistentID:{80C28FC0-FC84-49A8-9FF4-B8218D41BD26}" Type="Ref">/My Computer/Untitled Library 1.lvlib/Test</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
